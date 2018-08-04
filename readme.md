@@ -1,3 +1,6 @@
+[![npm](https://img.shields.io/npm/dw/localeval.svg)](https://www.npmjs.com/package/v-scroll-lock)
+[![Build Status](https://travis-ci.org/phegman/v-scroll-lock.svg?branch=master)](https://travis-ci.org/phegman/v-scroll-lock)
+
 # v-scroll-lock
 A Vue.js directive for body scroll locking (for iOS Mobile and Tablet, Android, desktop Safari/Chrome/Firefox) without breaking scrolling of a target element (eg. modal/lightbox/flyouts/nav-menus). Built on top of [https://github.com/willmcpo/body-scroll-lock](https://github.com/willmcpo/body-scroll-lock)
 
