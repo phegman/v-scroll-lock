@@ -1,53 +1,58 @@
 const path = require('path')
-const merge = require('webpack-merge')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-var config = {
-  mode: 'development',
+module.exports = {
+  entry: {
+    index: path.resolve(__dirname, './src/demo.ts'),
+  },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js'
+    path: path.resolve(__dirname, './dist'),
+    filename: 'demo.min.js',
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
       },
       {
-        test: /\.js$/,
-        loader: 'babel-loader'
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: [/node_modules/],
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        },
       },
       {
         test: /\.scss$/,
+        use: ['vue-style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
         use: [
-          'vue-style-loader',
-          'css-loader',
-          'sass-loader'
-        ]
-      }
-    ]
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.ts', '.js', '.vue', '.json'],
+    alias: {
+      vue$: 'vue/dist/vue.esm.js',
+    },
   },
   plugins: [
-    new VueLoaderPlugin()
-  ]
+    new VueLoaderPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, './src/index.html'),
+    }),
+  ],
+  devServer: {
+    contentBase: path.resolve(__dirname, './dist'),
+    port: 8080,
+    hot: true,
+  },
 }
-
-module.exports = [
-  merge(config, {
-    entry: {
-      main: './src/main.js'
-    }
-  }),
-  merge(config, {
-    entry: {
-      vSlide: './src/v-scroll-lock.js'
-    },
-    output: {
-      filename: 'v-scroll-lock.js',
-      libraryTarget: 'umd',
-      library: 'v-scroll-lock',
-      umdNamedDefine: true
-    }
-  })
-]
