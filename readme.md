@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/phegman/v-scroll-lock.svg?branch=master)](https://travis-ci.org/phegman/v-scroll-lock)
 
 # v-scroll-lock
+
 A Vue.js directive for body scroll locking (for iOS Mobile and Tablet, Android, desktop Safari/Chrome/Firefox) without breaking scrolling of a target element (eg. modal/lightbox/flyouts/nav-menus). Built on top of [https://github.com/willmcpo/body-scroll-lock](https://github.com/willmcpo/body-scroll-lock)
 
 ## Table of Contents
@@ -14,31 +15,47 @@ A Vue.js directive for body scroll locking (for iOS Mobile and Tablet, Android, 
 - [Contributing](#contributing)
 
 ## Overview
-Preventing the body from scrolling when you have a modal/lightbox/flyout/nav-menu open on all devices can be a huge pain. This package wraps the awesome library [https://github.com/willmcpo/body-scroll-lock](https://github.com/willmcpo/body-scroll-lock) into an easy to use Vue.js directive.
+
+Preventing the body from scrolling when you have a modal/lightbox/flyout/nav-menu open on all devices can be a huge pain. This package wraps [https://github.com/willmcpo/body-scroll-lock](https://github.com/willmcpo/body-scroll-lock) into an easy to use Vue.js directive.
 
 ## Demo
+
 Demo can be viewed here: [http://v-scroll-lock.peterhegman.com/](https://v-scroll-lock.peterhegman.com/)  
-Source code for demo can be viewed in `src/App.vue`
+Source code for demo can be viewed in `src/Demo.vue`
 
 ## Installation
 
-### Yarn
+### Module Bundler (Webpack, Rollup, etc)
 
-`yarn add v-scroll-lock`
+#### Yarn
 
-### NPM
+```bash
+yarn add v-scroll-lock
+```
 
-`npm install v-scroll-lock --save`
+#### NPM
 
-### Install the Vue plugin
+```bash
+npm install v-scroll-lock --save
+```
 
-In your main JS file first import this plugin
+#### Install the Directive
 
-`import VScrollLock from 'v-scroll-lock'`
+```js
+import VScrollLock from 'v-scroll-lock'
 
-Install the plugin
+Vue.use(VScrollLock)
+```
 
-`Vue.use(VScrollLock)`
+### [Vue CDN](https://vuejs.org/v2/guide/#Getting-Started)
+
+Download latest `v-scroll-lock.min.js` from [https://github.com/phegman/v-scroll-lock/releases](https://github.com/phegman/v-scroll-lock/releases)
+
+Include using a `<script>` tag
+
+```html
+<script src="v-scroll-lock.min.js"></script>
+```
 
 ## Usage
 
@@ -46,7 +63,7 @@ Once the plugin is installed the `v-scroll-lock` directive can be used in any of
 
 Here is an example of how you may implement it in a basic modal. See `src/components/Modal.vue` for a more in depth example.
 
-```html
+```vue
 <template>
   <div class="modal" v-if="open">
     <button @click="closeModal">X</button>
@@ -55,27 +72,39 @@ Here is an example of how you may implement it in a basic modal. See `src/compon
     </div>
   </div>
 </template>
-```
 
-```js
 <script>
 export default {
   name: 'Modal',
-  data () {
+  data() {
     return {
-      open: false
+      open: false,
     }
   },
   methods: {
-    openModal () {
+    openModal() {
       this.open = true
     },
-    closeModal () {
+    closeModal() {
       this.open = false
-    }
-  }
+    },
+  },
 }
 </script>
+```
+
+### Providing Your Own Version of [body-scroll-lock](https://github.com/willmcpo/body-scroll-lock)
+
+To make using this directive easier [body-scroll-lock](https://github.com/willmcpo/body-scroll-lock) is included in the package. In the case that you would like to use a version different than the packaged version this can be specified in the plugin options. Also note that `v-scroll-lock-no-dep.esm.js` should be imported to prevent duplicate code in your bundle. See example below:
+
+```js
+import VScrollLock from 'v-scroll-lock/dist/v-scroll-lock-no-dep.esm'
+import { enableBodyScroll, disableBodyScroll } from 'body-scroll-lock'
+
+Vue.use(VScrollLock, {
+  enableBodyScroll,
+  disableBodyScroll,
+})
 ```
 
 ## Support
