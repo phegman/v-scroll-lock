@@ -61,7 +61,7 @@ Include using a `<script>` tag
 
 Once the plugin is installed the `v-scroll-lock` directive can be used in any of your components. When the value of the directive is `true` scrolling will be locked on all elements **except** the element the directive is bound to.
 
-Here is an example of how you may implement it in a basic modal. See `src/components/Modal.vue` for a more in depth example.
+Here is an example of how you may implement it in a basic modal. Please note the below example is to demonstrate usage of the `v-scroll-lock` directive and is not a complete implementation of a modal. See `src/components/Modal.vue` for a more in depth example.
 
 ```vue
 <template>
