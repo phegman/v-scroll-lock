@@ -5,6 +5,7 @@
   "main": "dist/v-scroll-lock.umd.js",
   "module": "dist/v-scroll-lock.esm.js",
   "unpkg": "dist/v-scroll-lock.min.js",
+  "types": "dist/index.d.ts",
   "author": "Peter Hegman",
   "license": "GPL-3.0",
   "keywords": [
