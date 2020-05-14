@@ -16,6 +16,7 @@ const VScrollLock: VScrollLockInterface = {
       const {
         enableBodyScroll: enableBodyScrollOption,
         disableBodyScroll: disableBodyScrollOption,
+        bodyScrollOptions,
       } = options
 
       if (enableBodyScrollOption) {
@@ -24,6 +25,10 @@ const VScrollLock: VScrollLockInterface = {
 
       if (disableBodyScrollOption) {
         this.disableBodyScroll = disableBodyScrollOption
+      }
+
+      if (bodyScrollOptions) {
+        this.bodyScrollOptions = bodyScrollOptions
       }
     }
     Vue.directive('scroll-lock', {
@@ -34,12 +39,12 @@ const VScrollLock: VScrollLockInterface = {
   },
   inserted(el, binding) {
     if (binding.value) {
-      this.disableBodyScroll(el)
+      this.disableBodyScroll(el, this.bodyScrollOptions)
     }
   },
   componentUpdated(el, binding) {
     if (binding.value) {
-      this.disableBodyScroll(el)
+      this.disableBodyScroll(el, this.bodyScrollOptions)
     } else {
       this.enableBodyScroll(el)
     }

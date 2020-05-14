@@ -1,6 +1,10 @@
 import PluginOptions from './plugin-options.interface'
 import { PluginFunction, DirectiveFunction } from 'vue'
-import { enableBodyScroll, disableBodyScroll } from 'body-scroll-lock'
+import {
+  enableBodyScroll,
+  disableBodyScroll,
+  BodyScrollOptions,
+} from 'body-scroll-lock'
 
 export default interface VScrollLock {
   enableBodyScroll: typeof enableBodyScroll
@@ -9,4 +13,5 @@ export default interface VScrollLock {
   inserted: DirectiveFunction
   componentUpdated: DirectiveFunction
   unbind: DirectiveFunction
+  bodyScrollOptions?: Partial<BodyScrollOptions>
 }
