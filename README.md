@@ -93,7 +93,7 @@ export default {
 </script>
 ```
 
-#### [body-scroll-lock](https://github.com/willmcpo/body-scroll-lock#options) Options
+### [body-scroll-lock](https://github.com/willmcpo/body-scroll-lock#options) options
 
 Options can be passed when installing the directive:
 
@@ -106,6 +106,8 @@ Vue.use(VScrollLock, {
   },
 })
 ```
+
+See [https://github.com/willmcpo/body-scroll-lock#options](https://github.com/willmcpo/body-scroll-lock#options) for full list of options.
 
 ### Providing Your Own Version of [body-scroll-lock](https://github.com/willmcpo/body-scroll-lock)
 
