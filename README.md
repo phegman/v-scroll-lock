@@ -93,6 +93,22 @@ export default {
 </script>
 ```
 
+### [body-scroll-lock](https://github.com/willmcpo/body-scroll-lock#options) options
+
+Options can be passed when installing the directive:
+
+```js
+import VScrollLock from 'v-scroll-lock'
+
+Vue.use(VScrollLock, {
+  bodyScrollOptions: {
+    reserveScrollBarGap: true,
+  },
+})
+```
+
+See [https://github.com/willmcpo/body-scroll-lock#options](https://github.com/willmcpo/body-scroll-lock#options) for full list of options.
+
 ### Providing Your Own Version of [body-scroll-lock](https://github.com/willmcpo/body-scroll-lock)
 
 To make using this directive easier [body-scroll-lock](https://github.com/willmcpo/body-scroll-lock) is included in the package. In the case that you would like to use a version different than the packaged version this can be specified in the plugin options. Also note that `v-scroll-lock-no-dep.esm.js` should be imported to prevent duplicate code in your bundle. See example below:
