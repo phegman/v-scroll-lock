@@ -1,6 +1,6 @@
 {
   "name": "v-scroll-lock",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "A Vue.js directive for scroll locking",
   "main": "dist/v-scroll-lock.umd.js",
   "module": "dist/v-scroll-lock.esm.js",
